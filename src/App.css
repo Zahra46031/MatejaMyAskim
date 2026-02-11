@@ -29,10 +29,10 @@ h1 {
 
 button {
   font-size: 20px;
-  padding: 12px 24px;
+  padding: 18px 36px;
   margin: 10px;
   border: none;
-  border-radius: 12px;
+  border-radius: 16px;
   cursor: pointer;
 }
 
@@ -141,4 +141,13 @@ button {
   0%   { opacity: 0.1; transform: scale(0.97); }
   50%  { opacity: 1;   transform: scale(1.03); }
   100% { opacity: 0.1; transform: scale(0.97); }
+}
+
+.no-gif {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px; 
+  z-index: 1000;
 }
