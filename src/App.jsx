@@ -23,7 +23,7 @@ import x20 from "./assets/x20.jpeg";
 import x21 from "./assets/x21.jpeg";
 import x22 from "./assets/x22.jpeg";
 import x23 from "./assets/x23.jpeg";
-import x24 from "./assets/x24.jpeg";
+import dolma from "./assets/dolma.jpeg";
 import x25 from "./assets/x25.jpeg";
 import yessound from "./assets/yessound.mp3";
 import yaysoundcute from "./assets/yaysoundcute.mp3";
@@ -35,8 +35,9 @@ import gross from "./assets/gross.webp";
 import miserable from "./assets/miserable.gif";
 import pablo from "./assets/pablo.gif";
 import sadhamster from "./assets/sadhamster.gif";
-import ugly from "./assets/ugly.gif";
+import tito from "./assets/tito.jfif";
 import spongebob from "./assets/spongebob.webp";
+import notfunny from "./assets/notfunny.gif";
 
 export default function App() {
   const [yesClicked, setYesClicked] = useState(false);
@@ -48,37 +49,59 @@ export default function App() {
 );
 
 
-  const noMessages = [
-    "Wrong answer!!!",
-  "Are you serious right now??? 😢",
-  "OMG he's still pressing no 😤",
-  "STOP IT ITS NOT EVEN FUNNY ",
-  "Long live the glorious nation of Bulgaria",
-  "☹😭😰😨😤😤😠😡🤬",
-  "I think Alexander the Great is Greek 😈",
-  "I shouldn't have made a no button 😒",
-  "Do you wanna die?? ☠",
 
+const noResponses = [
+  { text: "Wrong answer!!!" },
+
+  { text: "Are you serious right now???",
+    gif: damn
+   },
+
+  { 
+    text: "OMG he's still pressing no 😤",
+  },
+
+  { 
+    text: "STOP IT ITS NOT EVEN FUNNY",
+    gif: notfunny
+  },
+
+  { text: "Long live the glorious nation of Bulgaria",
+    gif: bulgaria
+   },
+
+  { text: "☹😭😰😨😤😤😠😡🤬" },
+  { text: "I think Alexander the Great is Greek 😈" },
+  { text: "I shouldn't have made a no button 😒" },
+  { text: "Do you wanna die?? ☠" },
+  {gif: crying},
+  {gif: miserable},
+  {gif: pablo},
+  {gif: sadhamster},
+  {gif: spongebob},
+  {gif: tito},
+  {gif: gross}
 ];
+
 
 const photos = [
   { src: x1,  left: "1%",  top: "5%" },
-  { src: x2,  left: "13.5%", top: "5%" },
+  { src: x12,  left: "13.5%", top: "5%" },
   { src: x3,  left: "26%", top: "5%" },
   { src: x4,  left: "38.5%", top: "5%" },
   { src: x5,  left: "51%", top: "5%" },
-  { src: x6,  left: "63.5%", top: "5%" },
+  { src: x11,  left: "63.5%", top: "5%" },
   { src: x7,  left: "76%",  top: "5%" },
-  { src: x15, left: "88.5%", top: "5%" },
+  { src: x8, left: "88.5%", top: "5%" },
 
 
   
   { src: x19, left: "1%", top: "75%" },
   { src: x20, left: "13.5%", top: "75%" }, //2 75
-  { src: x9,  left: "26%", top: "75%" },  
-  { src: x24, left: "38.5%", top: "75%" },
+  { src: x18,  left: "26%", top: "75%" },  
+  { src: x9, left: "38.5%", top: "75%" },
   { src: x14, left: "51%", top: "75%" },
-  { src: x21, left: "63.5%", top: "75%" },
+  { src: dolma, left: "63.5%", top: "75%" },
   { src: x22, left: "76%", top: "75%" },
   { src: x23, left: "88.5%", top: "75%" },
   
@@ -88,46 +111,36 @@ const photos = [
   { src: x13, left: "26%",  top: "41%" }, // 25 35
   
   { src: x25, left: "38.5%", top: "46%" },
-  { src: x18, left: "51%", top: "46%" }, // 45 65
+  { src: x21, left: "51%", top: "46%" }, // 45 65
   
-  { src: x16, left: "63.5%", top: "41%" },
-  { src: x11, left: "76%", top: "41%" },
-  { src: x12, left: "88.5%", top: "41%" },
+  { src: x6, left: "63.5%", top: "41%" },
+  { src: x16, left: "76%", top: "41%" },
+  { src: x2, left: "88.5%", top: "41%" },
   
 
 ];
 
 
 const [noCount, setNoCount] = useState(0);
-const noGifs = [crying, bulgaria, damn, gross, miserable, pablo, sadhamster, ugly, spongebob];
+const noGifs = [crying, bulgaria, damn, gross, miserable, pablo, sadhamster, tito, spongebob];
 
 const handleNoClick = () => {
-  //for the sound
+  // 🔊 play sound
   const audio = new Audio(nosound);
   audio.volume = 0.6;
   audio.play();
-  
-  const showGif = Math.random() < 0.4; // 40% chance gif
-  
-  setNoCount(prev => {
-    const nextCount = prev + 1;
 
-  if (showGif) {
-    const randomGif = noGifs[Math.floor(Math.random() * noGifs.length)];
-    setCurrentGif(randomGif);
-    setMessage(null);
-  } else{
-    if (nextCount === 1) {
-      setMessage(noMessages[0]);
-    } else {
-      const randomIndex = Math.floor(Math.random() * noMessages.length);
-      setMessage(noMessages[randomIndex]);
-      setCurrentGif(null);
-    }
+  setNoCount(prev => prev + 1);
 
-  }
-    return nextCount;
-  });
+  // 🎲 pick random response
+  const randomIndex = Math.floor(Math.random() * noResponses.length);
+  const response = noResponses[randomIndex];
+
+  // 📝 set text
+  setMessage(response.text || null);
+
+  // 🎞 set gif only if it exists
+  setCurrentGif(response.gif || null);
 };
 
 const handleYesClick = () => {
