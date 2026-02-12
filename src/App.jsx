@@ -84,40 +84,12 @@ const noResponses = [
 ];
 
 
+// Updated photos array - now using percentage-based grid that works on all screens
 const photos = [
-  { src: x1,  left: "1%",  top: "5%" },
-  { src: x12,  left: "13.5%", top: "5%" },
-  { src: x3,  left: "26%", top: "5%" },
-  { src: x4,  left: "38.5%", top: "5%" },
-  { src: x5,  left: "51%", top: "5%" },
-  { src: x11,  left: "63.5%", top: "5%" },
-  { src: x7,  left: "76%",  top: "5%" },
-  { src: x8, left: "88.5%", top: "5%" },
-
-
-  
-  { src: x19, left: "1%", top: "75%" },
-  { src: x20, left: "13.5%", top: "75%" }, //2 75
-  { src: x18,  left: "26%", top: "75%" },  
-  { src: x9, left: "38.5%", top: "75%" },
-  { src: x14, left: "51%", top: "75%" },
-  { src: dolma, left: "63.5%", top: "75%" },
-  { src: x22, left: "76%", top: "75%" },
-  { src: x23, left: "88.5%", top: "75%" },
-  
-
-  { src: x17, left: "1%", top: "41%" }, //2 30
-  { src: x10, left: "13.5%", top: "41%" },
-  { src: x13, left: "26%",  top: "41%" }, // 25 35
-  
-  { src: x25, left: "38.5%", top: "46%" },
-  { src: x21, left: "51%", top: "46%" }, // 45 65
-  
-  { src: x6, left: "63.5%", top: "41%" },
-  { src: x16, left: "76%", top: "41%" },
-  { src: x2, left: "88.5%", top: "41%" },
-  
-
+  // These will be arranged in a responsive grid via CSS
+  x1, x12, x3, x4, x5, x11, x7, x8,
+  x19, x20, x18, x9, x14, dolma, x22, x23,
+  x17, x10, x13, x25, x21, x6, x16, x2
 ];
 
 
@@ -198,28 +170,25 @@ const handleYesClick = () => {
         </>
       ) : (
         <>
-        <h1 className="celebrate">YAY!!! 💘💘💘 te sakam!</h1>
+        <h1 className="celebrate"></h1>
 
-<div className="photo-rain">
-  {photos.map((photo, i) => (
-    <div
-      key={i}
-      className="sparkly"
-      style={{
-        left: photo.left,
-        top: photo.top,
-        position: "absolute",
-        animationDelay: `${i * 0.3}s`
-      }}
-    >
-      <img
-        src={photo.src}
-        className="falling-photo"
-        alt=""
-      />
-    </div>
-  ))}
-</div>
+        <div className="photo-rain">
+          {photos.map((photo, i) => (
+            <div
+              key={i}
+              className="sparkly"
+            >
+              <img
+                src={photo}
+                className="falling-photo"
+                style={{
+                  animationDelay: `${i * 0.15}s`
+                }}
+                alt=""
+              />
+            </div>
+          ))}
+        </div>
 
              </>
          )
