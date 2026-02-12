@@ -18,12 +18,22 @@ body {
   text-align: center;
   padding: 20px;
   box-sizing: border-box;
+  gap: 30px;
 }
 
 h1 {
   color: #b0004b;
-  margin-bottom: 300px;
   font-size: 4rem;
+  margin: 0;
+}
+
+.message-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  min-height: 300px;
+  justify-content: center;
 }
 
 .buttons {
@@ -146,7 +156,7 @@ button {
   border-radius: 16px;
   box-shadow:
     0 0 12px rgba(255,182,193,0.9),
-    0 0 24px rgba(255, 0, 140, 0.7);
+    0 0 24px rgba(255,105,180,0.7);
   opacity: 0.6;
   animation: sparklePulse 2.5s ease-in-out infinite;
   pointer-events: none;
@@ -160,12 +170,10 @@ button {
 }
 
 .no-gif {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 250px; 
-  z-index: 1000;
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
 }
 
 /* ========== MOBILE RESPONSIVENESS ========== */
@@ -174,7 +182,10 @@ button {
 @media (max-width: 1024px) {
   h1 {
     font-size: 3rem;
-    margin-bottom: 200px;
+  }
+  
+  .message-area {
+    min-height: 250px;
   }
   
   .celebrate {
@@ -194,7 +205,7 @@ button {
   }
   
   .no-gif {
-    width: 200px;
+    max-width: 200px;
   }
 }
 
@@ -202,8 +213,12 @@ button {
 @media (max-width: 768px) {
   h1 {
     font-size: 2.5rem;
-    margin-bottom: 150px;
     padding: 0 10px;
+  }
+  
+  .message-area {
+    min-height: 200px;
+    gap: 15px;
   }
   
   button {
@@ -230,7 +245,7 @@ button {
   }
   
   .no-gif {
-    width: 180px;
+    max-width: 180px;
   }
 }
 
@@ -238,9 +253,17 @@ button {
 @media (max-width: 480px) {
   h1 {
     font-size: 1.8rem;
-    margin-bottom: 100px;
     padding: 0 15px;
     line-height: 1.3;
+  }
+  
+  .message-area {
+    min-height: 180px;
+    gap: 12px;
+  }
+  
+  .container {
+    gap: 20px;
   }
   
   button {
@@ -274,7 +297,7 @@ button {
   }
   
   .no-gif {
-    width: 150px;
+    max-width: 150px;
   }
 }
 
@@ -282,7 +305,11 @@ button {
 @media (max-width: 360px) {
   h1 {
     font-size: 1.5rem;
-    margin-bottom: 80px;
+  }
+  
+  .message-area {
+    min-height: 150px;
+    gap: 10px;
   }
   
   button {
@@ -308,7 +335,7 @@ button {
   }
   
   .no-gif {
-    width: 130px;
+    max-width: 130px;
   }
 }
 
@@ -316,11 +343,16 @@ button {
 @media (max-height: 500px) and (orientation: landscape) {
   h1 {
     font-size: 1.8rem;
-    margin-bottom: 50px;
+  }
+  
+  .message-area {
+    min-height: 120px;
+    gap: 10px;
   }
   
   .container {
     padding: 10px;
+    gap: 15px;
   }
   
   button {
@@ -342,6 +374,6 @@ button {
   }
   
   .no-gif {
-    width: 120px;
+    max-width: 120px;
   }
 }

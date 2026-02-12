@@ -136,7 +136,16 @@ const handleYesClick = () => {
     <div className="container">
       {!yesClicked ? (
         <>
-          <h1 className="pulse-light">{message}</h1>
+          <div className="message-area">
+            <h1 className="pulse-light">{message}</h1>
+            {currentGif && (
+              <img
+                src={currentGif}
+                className="no-gif"
+                alt=""
+              />
+            )}
+          </div>
 
           <div className="buttons">
             <button className="yes" 
@@ -158,19 +167,11 @@ const handleYesClick = () => {
             >
               No 😅
             </button>
-
-      {currentGif && (
-        <img
-          src={currentGif}
-          className="no-gif"
-          alt=""
-        />
-      )}
           </div>
         </>
       ) : (
         <>
-        <h1 className="celebrate"></h1>
+        <h1 className="celebrate">YAY!!! 💘💘💘 te sakam!</h1>
 
         <div className="photo-rain">
           {photos.map((photo, i) => (
