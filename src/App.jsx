@@ -171,7 +171,7 @@ const handleYesClick = () => {
         </>
       ) : (
         <>
-        <h1 className="celebrate">YAY!!! 💘💘💘 te sakam!</h1>
+        <h1 className="celebrate"></h1>
 
         <div className="photo-rain">
           {photos.map((photo, i) => (
